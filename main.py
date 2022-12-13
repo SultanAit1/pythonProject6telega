@@ -31,7 +31,6 @@ async def quiz_1(message: types.Message):
         is_anonymous=False,
         type='quiz',
         correct_option_id=3,
-        open_period=15,
         reply_markup=markup
     )
 
@@ -58,7 +57,6 @@ async def quiz_2(call: types.CallbackQuery):
         is_anonymous=False,
         type='quiz',
         correct_option_id=0,
-        open_period=15,
         reply_markup=markup
     )
 
@@ -71,8 +69,8 @@ async def send_image(message: types.Message):
 
 @dp.message_handler()
 async def echo(message: types.Message):
-    await bot.send_message(chat_id=message.from_user.id, text=message.text)
     await bot.send_message(chat_id=message.from_user.id, text=int(message.text) ** 2)
+    await bot.send_message(chat_id=message.from_user.id, text=message.text)
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
